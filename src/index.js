@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+//resources
 import './index.css';
+import './shared/FontAwesome';
+
+// pages
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
