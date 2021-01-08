@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import Route from './Route';
 
 import SignIn from '../containers/signin';
@@ -9,8 +9,8 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/signin" exact component={SignIn} />
-
       <Route path="/dashboard" component={Main} isPrivate />
+      <Redirect from="*" to="/dashboard" />
     </Switch>
   )
 }
