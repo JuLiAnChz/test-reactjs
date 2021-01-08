@@ -100,7 +100,7 @@ class SignIn extends Component {
     return (
       <div className="w-screen h-screen flex flex-col justify-center items-center bg-gray-200">
         <img className="fixed bottom-0 left-0 right-0" src={WaveImage} alt="Bottom Wave" />
-        <div className="shadow border rounded p-4 bg-white">
+        <div className="shadow border rounded p-4 bg-white z-50">
           <form noValidate={true} onSubmit={this.handleSubmit} className="flex flex-col justify-center items-center z-50">
             <img src={AvatarImage} alt="Avatar" className="w-32" />
             <h2 className="my-8 font-display font-bold text-3xl text-gray-700 text-center">
