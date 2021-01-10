@@ -13,7 +13,6 @@ import WaveImage from '../../images/wave.svg';
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
     this.state = {
       email: '',
       password: '',

@@ -11,7 +11,6 @@ function RouteWrapper({
   ...rest
 }) {
   const auth = useSelector(state => state.auth);
-
   const signed = auth && auth.loggedIn;
 
   if (isPrivate && !signed) {

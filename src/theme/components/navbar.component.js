@@ -2,7 +2,15 @@ import { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { todoActions } from '../../redux/actions';
+import { todoActions, userActions } from '../../redux/actions';
+import LogoImage from '../../images/logo.svg';
+import AvatarImage from '../../images/avatar_img.svg';
+import {
+	Menu,
+	MenuItem,
+	MenuButton
+} from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/index.css';
 
 class Navbar extends Component {
   constructor(props) {
@@ -17,8 +25,8 @@ class Navbar extends Component {
         <div className="flex flex-wrap items-center">
           <div className="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
             <Link to="/dashboard">
-              <span className="text-xl pl-2">
-                <i className="em em-grinning"></i>
+              <span className="pl-2">
+                <img src={LogoImage} width="100" className="-mt-5" />
               </span>
             </Link>
           </div>
@@ -40,15 +48,16 @@ class Navbar extends Component {
               </li>
               <li className="flex-1 md:flex-none md:mr-3">
                 <div className="relative inline-block">
-                  <button className="drop-button text-white focus:outline-none">
-                    <span className="pr-2">
-                      <i className="em em-robot_face"></i>
-                    </span>
-                    {this.props.auth.user.user.name} 
-                    <svg className="h-3 fill-current inline invisible md:visible" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                    </svg>
-                  </button>
+									<Menu menuButton={
+										<MenuButton style={{'backgroundColor': 'transparent !important', color: 'white !important'}}>
+											{this.props.auth.user.user.name} 
+											<svg className="h-3 fill-current inline invisible md:visible" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+												<path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+											</svg>
+										</MenuButton>
+										}>
+										<MenuItem onClick={() => this.props.logout()}>Cerrar Sesión</MenuItem>
+									</Menu>
                 </div>
               </li>
             </ul>
@@ -70,6 +79,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
 		allTodos: () => dispatch(todoActions.all()),
+		logout: () => dispatch(userActions.logout())
   }
 }
 

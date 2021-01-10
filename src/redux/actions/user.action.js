@@ -7,13 +7,23 @@ import {
   USER_LOGIN_FAILURE,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
-  USER_REGISTER_FAILURE
+	USER_REGISTER_FAILURE,
+	USER_LIST,
+	USER_LIST_FAILURE,
+	USERS_DISABLE,
+	USERS_DISABLE_FAILURE,
+	USERS_RANDOM,
+	USERS_RANDOM_FAILURE,
+	USER_LOGOUT
 } from '../types';
 
 export const userActions = {
   login,
   logout,
-  register
+	register,
+	all,
+	inactiveUsers,
+	generateRandomUsers
 };
 
 function login(username, password, from) {
@@ -49,7 +59,12 @@ function login(username, password, from) {
 }
 
 function logout() {
-  userService.logout();
+	return dispatch => {
+		userService.logout();
+		dispatch({
+			type: USER_LOGOUT
+		});
+	}
 }
 
 function register(user) {
@@ -68,4 +83,55 @@ function register(user) {
   function request(resUser) { return {type: USER_REGISTER_REQUEST, user: resUser}}
   function success(resUser) { return {type: USER_REGISTER_SUCCESS, user: resUser}}
   function failure(message) { return {type: USER_REGISTER_FAILURE, message}}
+}
+
+function all() {
+	return dispatch => {
+		userService.all().then((users) => {
+			dispatch({
+				type: USER_LIST,
+				users
+			});
+		}).catch((error) => {
+      dispatch({
+				type: USER_LIST_FAILURE,
+				message: error.message
+			});
+      dispatch(alertActions.error(error.toString()));
+		});
+	}
+}
+
+function inactiveUsers(users) {
+	return dispatch => {
+		userService.inactiveUsers(users).then((disabledUsers) => {
+			dispatch({
+				type: USERS_DISABLE,
+				users: disabledUsers
+			});
+		}).catch((error) => {
+      dispatch({
+				type: USERS_DISABLE_FAILURE,
+				message: error.message
+			});
+      dispatch(alertActions.error(error.toString()));
+		});
+	}
+}
+
+function generateRandomUsers() {
+	return dispatch => {
+		userService.generateRandomUsers().then((users) => {
+			dispatch({
+				type: USERS_RANDOM,
+				users
+			});
+		}).catch((error) => {
+      dispatch({
+				type: USERS_RANDOM_FAILURE,
+				message: error.message
+			});
+      dispatch(alertActions.error(error.toString()));
+		});
+	}
 }
