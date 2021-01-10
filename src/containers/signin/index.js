@@ -74,26 +74,6 @@ class SignIn extends Component {
     }
 
     this.props.login(email, password);
-
-    /* userService.login(email, password).then((cUser) => {
-      console.log(cUser);
-    }).catch((error) => {
-      const type = error.response && (error.response.data.error || 'normal');
-      let messages;
-      switch(type) {
-        case 'invalid_credentials':
-          messages = 'Usuario/contraseña inválidos';
-        break;
-
-        case 'could_not_create_token':
-          messages = 'Se ha producido un error al iniciar sesión, contactese con el administrador del sistema';
-        break;
-
-        default:
-          messages = 'No es posible iniciar sesión, intentelo más tarde';
-      }
-      this.props.showErrorAlert(messages)
-    }); */
   }
 
   render() {
