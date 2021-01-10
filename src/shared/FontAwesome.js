@@ -1,7 +1,19 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 // Import icons
-import { faLock, faUser, faBell, faHome, faTasks, faUsers, faSearch } from '@fortawesome/free-solid-svg-icons';
+import {
+	faLock,
+	faUser,
+	faBell,
+	faHome,
+	faTasks,
+	faUsers,
+	faSearch,
+	faCheck,
+	faPencilAlt,
+	faTrash,
+	faSave
+} from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faLock,
@@ -10,5 +22,9 @@ library.add(
   faHome,
   faTasks,
   faUsers,
-  faSearch
+	faSearch,
+	faCheck,
+	faPencilAlt,
+	faTrash,
+	faSave
 );

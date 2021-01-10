@@ -20,17 +20,15 @@ function RouteWrapper({
 
   if (!isPrivate && signed) {
     return <Redirect to="/dashboard" />;
-  }
-
-  const Layout = signed ? DashboardLayout : DashboardLayout;
+	}
 
   return (
     <Route
       {...rest}
       render={props => (
-        <Layout>
-          <Component {...props} />
-        </Layout>
+				signed === true ? (<DashboardLayout>
+					<Component {...props} />
+				</DashboardLayout>) : (<Component {...props} />)
       )}
     />
   );

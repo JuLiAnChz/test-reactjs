@@ -1,5 +1,7 @@
 const initialState = {
-  alert: null
+	alert: null,
+	auth: null,
+	todos: []
 };
 
 function rootReducer (state = initialState, action) {

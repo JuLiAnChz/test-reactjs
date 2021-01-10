@@ -21,7 +21,7 @@ class App extends Component {
       <div className="w-full">
         {
           this.props.alert.message &&
-          <div className="text-white px-6 py-4 border-0 rounded fixed top-0 left-0 right-0 mb-4 bg-red-500 mx-2 mt-2">
+          <div className="text-white px-6 py-4 border-0 rounded fixed top-0 left-0 right-0 mb-4 bg-red-500 mx-2 mt-2 z-50">
             <span className="text-xl inline-block mr-5 align-middle">
               <FontAwesomeIcon icon={['fas', 'bell']} />
             </span>
