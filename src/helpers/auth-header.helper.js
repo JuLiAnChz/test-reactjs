@@ -1,7 +1,12 @@
 export function authHeader() {
-  let user = JSON.parse(localStorage.getItem('user'));
+	let user = JSON.parse(localStorage.getItem('cUser'));
   if (user && user.token) {
-    return {Authorization: `Bearer ${user.token}`}
+    return {
+			headers: {
+				Authorization: `Bearer ${user.token}`
+			},
+			withCredentials: true
+		}
   }
   return {}
 }
