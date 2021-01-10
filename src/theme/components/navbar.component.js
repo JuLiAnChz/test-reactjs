@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { todoActions } from '../../redux/actions';
+import LogoImage from '../../images/logo.svg';
 
 class Navbar extends Component {
   constructor(props) {
@@ -17,8 +18,8 @@ class Navbar extends Component {
         <div className="flex flex-wrap items-center">
           <div className="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
             <Link to="/dashboard">
-              <span className="text-xl pl-2">
-                <i className="em em-grinning"></i>
+              <span className="pl-2">
+                <img src={LogoImage} width="100" className="-mt-5" />
               </span>
             </Link>
           </div>
