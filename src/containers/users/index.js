@@ -45,12 +45,7 @@ class Users extends Component {
 		this.props.allUsers();
 	}
 
-	click(user) {
-		console.log(user)
-	}
-
 	selectedRows(state) {
-		console.log(state);
 		this.setState({
 			selectedRows: state.selectedRows
 		});
@@ -61,7 +56,6 @@ class Users extends Component {
 	}
 
   render() {
-		console.log(this.props.auth.users)
     return (
 			<div className="flex-none w-full bg-white shadow rounded">
 				<div className="grid grid-cols-1 gap-2">

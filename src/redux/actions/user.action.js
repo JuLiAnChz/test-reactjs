@@ -13,7 +13,8 @@ import {
 	USERS_DISABLE,
 	USERS_DISABLE_FAILURE,
 	USERS_RANDOM,
-	USERS_RANDOM_FAILURE
+	USERS_RANDOM_FAILURE,
+	USER_LOGOUT
 } from '../types';
 
 export const userActions = {
@@ -58,7 +59,12 @@ function login(username, password, from) {
 }
 
 function logout() {
-  userService.logout();
+	return dispatch => {
+		userService.logout();
+		dispatch({
+			type: USER_LOGOUT
+		});
+	}
 }
 
 function register(user) {

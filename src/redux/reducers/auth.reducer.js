@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
     case USER_LOGIN_FAILURE:
       return {...state};
     case USER_LOGOUT:
-			return {...state};
+			return {...state, user: null, loggedIn: false};
 		case USER_LIST:
 			return {
 				...state,
